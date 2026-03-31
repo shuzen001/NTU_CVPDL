@@ -1,0 +1,67 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+
+# Local tooling
+.codex
+.gradio/
+**/.gradio/
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+
+# Logs
+*.log
+
+# Model weights / checkpoints
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+checkpoints/
+**/checkpoints/
+
+# Archives
+*.zip
+*.tar
+*.gz
+*.7z
+
+# Generated outputs
+runs/
+**/runs/
+yolo_runs/
+**/yolo_runs/
+finetune_runs/
+**/finetune_runs/
+generated_images/
+**/generated_images/
+
+# Datasets and caches
+*.cache
+*.npz
+minst/
+H3/minst/
+H1/src/train/
+H1/src/test/
+H2/CVPDL_hw2/CVPDL_hw2/train/
+H2/CVPDL_hw2/CVPDL_hw2/test/
+H2/CVPDL_hw2/CVPDL_hw2/yolo_dataset/
+H2/CVPDL_hw2/CVPDL_hw2/yolo_dataset_rtdetr/
+H2/CVPDL_hw2/CVPDL_hw2/yolo_folds/
+H2/CVPDL_hw2/CVPDL_hw2/detr_cache
+
+# Submission artifacts
+H2/CVPDL_hw2/CVPDL_hw2/submission_file/
+
+# Embedded repositories
+H2/CVPDL_hw2/CVPDL_hw2/DETR-PyTorch/
+H2/CVPDL_hw2/CVPDL_hw2/aideml/

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>report.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="cvpdl-hw2-%E5%A0%B1%E5%91%8A--yolov12m-%E9%95%B7%E5%B0%BE%E7%89%A9%E4%BB%B6%E5%81%B5%E6%B8%AC%E5%BE%9E%E9%9B%B6%E8%A8%93%E7%B7%B4">CVPDL HW2 報告 — YOLOv12m 長尾物件偵測（從零訓練）</h1>
+<h2 id="1-model-description">1. Model Description</h2>
+<p>本作業以自行定義的 YOLOv12m 為主體，完全不使用預訓練權重，並針對資料長尾特性進行架構與資料流程調整。模型骨幹維持 CSP/C2f 堆疊，但在原本 CBAM 注意力位置動態插入 <strong>Coordinate Attention (CA)</strong>，保留空間位置資訊以加強小物件與尾端類別；同時維持三層 FPN/PAN 頻寬以處理 2880×2880 之高解析度輸入。</p>
+<pre><code class="language-mermaid"><div class="mermaid">flowchart TB
+    A[輸入影像 2880×2880] --> B[Backbone<br/>Conv → C2f ×3 → CA]
+    B --> C[P3/P4/P5 特徵]
+    C --> D[SPPF]
+    D --> E[Neck (PAN-FPN)<br/>Upsample ↔ Concat ↔ C2f]
+    E --> F[Detect Head<br/>三尺度預測 (P3/P4/P5)]
+    subgraph 修改重點
+    B ---|替換| CA1[CBAM → Coordinate Attention ×4]
+    D ---|保持| SPPF[SPPF 提取全域上下文]
+    end
+</div></code></pre>
+<p>核心修改與其目的：</p>
+<ul>
+<li>以 <strong>Coordinate Attention</strong> 取代 CBAM，避免小物件在高解析下因平均池化而被抹除。</li>
+<li>以 <code>imgsz=2880</code>、<code>batch=1</code> 配合 AdamW 與 cosine LR，確保在 12 GB VRAM 下仍能穩定收斂。</li>
+<li>維持 Ultralytics Detect head，但調整 loss 比重與 IoU/NMS 參數以配合高解析輸入。</li>
+<li>透過 class-aware Augmentation YAML，自訂 tail/head 類別增強倍率。</li>
+</ul>
+<h2 id="2-implementation-details">2. Implementation Details</h2>
+<ul>
+<li>資料前處理：將原始標註轉為 YOLO txt（中心點格式），以 <code>prepare_yolo_dataset</code> 建立 symlink；高解析輸入先行檢查缺失標註並保持原始長寬比。</li>
+<li>長尾重採樣：<code>hybrid_resample_dataset</code> 先以 <code>oversample_threshold=0.3</code> 判斷 tail 類別，再對 head-only 影像可選擇性下採樣，最後針對 tail 類別複製含該類別之影像直到達到 <code>target_balance_ratio=0.5</code>。</li>
+<li>類別感知增強：在 YAML 註記 tail/head 類別增強倍率 (<code>tail_class_aug_factor=2</code>, <code>head_class_aug_factor=0.5</code>)，搭配 Mosaic 0.4、Copy-Paste 0.5 與 RandAugment 色彩轉換，只在尾端類別保留較強增強。</li>
+<li>訓練超參數：300 epoch、<code>lr0=1e-3</code>、AdamW (<code>weight_decay=5e-4</code>)、cosine LR、warmup 3 epoch、<code>patience=25</code>，AMP 開啟並於最後 10 epoch 關閉 Mosaic。</li>
+<li>驗證與推論：於每次 epoch 保存最佳 mAP50 權重，並以官方 <code>val_batch*_pred.jpg</code>、混淆矩陣與 PR/F1 曲線檢視收斂；最終使用 <code>runs/yolov12m_2880/weights/best.pt</code> 產生 Kaggle <code>submission.csv</code>。</li>
+</ul>
+<h2 id="3-result-analysis">3. Result Analysis</h2>
+<p><img src="runs/yolov12m_2880/results.png" alt="訓練過程指標曲線"></p>
+<h3 id="31-%E6%B7%B7%E5%90%88%E9%95%B7%E5%B0%BE%E7%AD%96%E7%95%A5%E5%BE%8C%E7%9A%84%E8%B3%87%E6%96%99%E5%88%86%E4%BD%88">3.1 混合長尾策略後的資料分佈</h3>
+<table>
+<thead>
+<tr>
+<th>類別</th>
+<th style="text-align:right">原始訓練數量</th>
+<th style="text-align:right">佔比</th>
+<th style="text-align:right">重採樣後訓練數量</th>
+<th style="text-align:right">佔比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Car</td>
+<td style="text-align:right">21,313</td>
+<td style="text-align:right">100.0%</td>
+<td style="text-align:right">72,956</td>
+<td style="text-align:right">100.0%</td>
+</tr>
+<tr>
+<td>Hov</td>
+<td style="text-align:right">1,205</td>
+<td style="text-align:right">5.7%</td>
+<td style="text-align:right">6,245</td>
+<td style="text-align:right">8.6%</td>
+</tr>
+<tr>
+<td>Person</td>
+<td style="text-align:right">2,891</td>
+<td style="text-align:right">13.6%</td>
+<td style="text-align:right">18,812</td>
+<td style="text-align:right">25.8%</td>
+</tr>
+<tr>
+<td>Motorcycle</td>
+<td style="text-align:right">4,737</td>
+<td style="text-align:right">22.2%</td>
+<td style="text-align:right">28,750</td>
+<td style="text-align:right">39.4%</td>
+</tr>
+<tr>
+<td>影像數</td>
+<td style="text-align:right">855</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">3,179</td>
+<td style="text-align:right">—</td>
+</tr>
+</tbody>
+</table>
+<p><img src="runs/yolov12m_2880/BoxPR_curve.png" alt="Box Precision-Recall 曲線">
+<img src="runs/yolov12m_2880/BoxF1_curve.png" alt="Box F1 曲線"></p>
+<p>混合重採樣大幅提升尾端類別樣本量（Hov ×4.0、Person ×3.7、Motorcycle ×2.3），並維持 head 類別影像的多樣性，為長尾問題提供更平衡的訓練基礎。</p>
+<h3 id="32-%E6%95%B8%E6%93%9A%E6%88%90%E6%95%88%E6%AF%94%E8%BC%83">3.2 數據成效比較</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th><code>imgsz</code></th>
+<th>長尾策略</th>
+<th style="text-align:right">最佳 epoch</th>
+<th style="text-align:right">mAP50</th>
+<th style="text-align:right">mAP50-95</th>
+<th style="text-align:right">Precision</th>
+<th style="text-align:right">Recall</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>YOLOv12m（基線）</td>
+<td>1280</td>
+<td>無額外調整</td>
+<td style="text-align:right">126</td>
+<td style="text-align:right">0.701</td>
+<td style="text-align:right">0.257</td>
+<td style="text-align:right">0.727</td>
+<td style="text-align:right">0.684</td>
+</tr>
+<tr>
+<td><strong>YOLOv12m（本作）</strong></td>
+<td>2880</td>
+<td>Hybrid Resample + CA</td>
+<td style="text-align:right"><strong>181</strong></td>
+<td style="text-align:right"><strong>0.732</strong></td>
+<td style="text-align:right"><strong>0.269</strong></td>
+<td style="text-align:right"><strong>0.778</strong></td>
+<td style="text-align:right"><strong>0.696</strong></td>
+</tr>
+</tbody>
+</table>
+<p>提升重點：</p>
+<ul>
+<li>mAP50 +3.1%，mAP50-95 +1.1%，顯示高解析輸入與注意力替換強化了多尺度偵測。</li>
+<li>Precision +5.1%，Recall +1.2%，推論更穩定且少誤報，特別在 Person、Motorcycle 等尾端類別上觀察到召回率提升（Person recall 0.41 → 0.43）。</li>
+</ul>
+<p><img src="runs/yolov12m_2880/confusion_matrix_normalized.png" alt="混淆矩陣（正規化）"></p>
+<h3 id="33-%E8%A8%93%E7%B7%B4%E6%9B%B2%E7%B7%9A%E8%88%87%E9%87%8F%E5%8C%96%E5%9C%96%E8%A1%A8">3.3 訓練曲線與量化圖表</h3>
+<ul>
+<li><code>runs/yolov12m_2880/results.png</code> 顯示 50 epoch 內 loss 明顯下降，後期進入穩定振盪。</li>
+<li><code>BoxPR_curve.png</code>、<code>BoxF1_curve.png</code> 顯示高 IoU 下 precision 有效提升；F1 峰值落在信心 0.32 左右。</li>
+<li>混淆矩陣顯示 tail 類別誤判主要來自背景；與 1280 模型相比，Person 背景混淆從 0.56 降至 0.55，Hov 預測保持 0.81。</li>
+</ul>
+<p><img src="runs/yolov12m_2880/BoxP_curve.png" alt="Box Precision 曲線">
+<img src="runs/yolov12m_2880/BoxR_curve.png" alt="Box Recall 曲線"></p>
+<h3 id="34-%E8%A6%96%E8%A6%BA%E5%8C%96%E7%B5%90%E6%9E%9C">3.4 視覺化結果</h3>
+<p><img src="runs/yolov12m_2880/val_batch0_pred.jpg" alt="驗證集樣本預測 1">
+<img src="runs/yolov12m_2880/val_batch1_pred.jpg" alt="驗證集樣本預測 2">
+<img src="runs/yolov12m_2880/val_batch2_pred.jpg" alt="驗證集樣本預測 3"></p>
+<ul>
+<li><code>val_batch*_pred.jpg</code> 顯示長尾類別（Hov、Motorcycle）在擁擠場景仍能產生多框偵測，且高解析下邊框貼合度更佳。</li>
+<li><code>train_batch*.jpg</code> 確認 Mosaic 與 Copy-Paste 在尾端類別上保持語意一致，無過度扭曲。</li>
+</ul>
+<h3 id="35-%E9%95%B7%E5%B0%BE%E5%95%8F%E9%A1%8C%E5%88%86%E6%9E%90">3.5 長尾問題分析</h3>
+<ul>
+<li><strong>資料層面</strong>：混合重採樣有效擴充 tail 類別，並透過類別感知增強讓尾端樣本暴露於更強的形變與色彩擾動，減少過擬合。</li>
+<li><strong>模型層面</strong>：Coordinate Attention 在 P3/P4/P5 特徵後加入，使尾端小物件於高解析圖像中保留位置信息，對應 Person、Motorcycle 的 recall 上升。</li>
+<li><strong>綜合評估</strong>：與原始 1280 模型相比，整體 mAP50-95 提升 1.1%，且 tail 類別於驗證集的檢測信心更集中（Box PR 曲線面積增大），符合長尾優化目標。</li>
+</ul>
+<h2 id="4-short-conclusion">4. Short Conclusion</h2>
+<p>透過高解析 YOLOv12m、Coordinate Attention、混合重採樣與類別感知增強，本作在不使用預訓練權重的前提下，將 mAP50 提升至 0.732、Recall 提升至 0.696，並在尾端類別上取得更穩定的檢測結果。後續可考慮加入動態 re-weight loss 或針對背景誤判進行廣義 Focal Loss 調整，以進一步壓低 tail 類別的背景漏檢。</p>
+
+</body>
+</html>
