@@ -118,5 +118,3 @@ Notebook 會於專案底下自動建立：
 - 若不需長尾重採樣，將 `cfg.use_oversampling = False`、`cfg.use_undersampling = False`。
 - 修改 `cfg.run_name` 以區分不同實驗；所有輸出會依 run name 分開儲存。
 - 推論時欲調整閾值，可在 `run_inference_to_submission` 傳入 `score_thresh`、`iou_thresh`。
-
-如有額外自訂流程，建議複製 `HW2_solution.ipynb` 並另存版本，避免覆寫原始設定。祝順利完成 HW2！🎯
